@@ -85,28 +85,28 @@ export const DealsPage: React.FC<DealsPageProps> = ({ onNavigateToNewDeal }) => 
     <div className="min-h-screen bg-white pb-16">
       {/* Sticky Header */}
       <header className="sticky top-0 z-30 backdrop-blur bg-white shadow-md border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0">
           <div>
-            <h1 className="text-3xl font-extrabold text-black tracking-tight flex items-center gap-2">
-              <ArrowRightCircleIcon className="h-8 w-8 text-black" />
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-black tracking-tight flex items-center gap-2">
+              <ArrowRightCircleIcon className="h-7 w-7 sm:h-8 sm:w-8 text-black" />
               Deals Management
             </h1>
-            <p className="mt-1 text-gray-600 text-sm">View and manage all your deals. Search, sort, and delete deals as needed.</p>
+            <p className="mt-1 text-gray-600 text-xs sm:text-sm">View and manage all your deals. Search, sort, and delete deals as needed.</p>
           </div>
-          <div className="flex space-x-3">
+          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 w-full sm:w-auto">
             {onNavigateToNewDeal && (
               <button
                 onClick={onNavigateToNewDeal}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-black text-white font-semibold shadow hover:scale-105 hover:bg-gray-900 transition-all focus:outline-none focus:ring-2 focus:ring-gray-400"
+                className="inline-flex items-center gap-2 w-full sm:w-auto justify-center px-4 sm:px-5 py-2 rounded-lg bg-black text-white font-semibold shadow hover:scale-105 hover:bg-gray-900 transition-all focus:outline-none focus:ring-2 focus:ring-gray-400 text-sm sm:text-base"
               >
-                <PlusCircleIcon className="h-6 w-6 text-white" />
+                <PlusCircleIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 Create New Deal
               </button>
             )}
             {deals.length > 0 && (
               <button
                 onClick={handleClearAllDeals}
-                className="px-4 py-2 border border-gray-400 rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                className="w-full sm:w-auto px-4 py-2 border border-gray-400 rounded-md shadow-sm text-xs sm:text-sm font-medium text-black bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500"
               >
                 Clear All
               </button>
@@ -115,10 +115,10 @@ export const DealsPage: React.FC<DealsPageProps> = ({ onNavigateToNewDeal }) => 
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 mt-6 sm:mt-8">
         {/* Summary Cards */}
         {deals.length > 0 && (
-          <div className="mb-8 grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             <SummaryCard icon="📄" label="Total Deals" value={totalDeals} />
             <SummaryCard icon="£" label="Total Loan Amount" value={formatCurrency(totalLoanAmount)} />
             <SummaryCard icon="Σ" label="Total Turnover" value={formatCurrency(totalTurnover)} />
@@ -134,16 +134,16 @@ export const DealsPage: React.FC<DealsPageProps> = ({ onNavigateToNewDeal }) => 
 
         {/* Empty State */}
         {deals.length === 0 && (
-          <div className="text-center py-20 animate-fade-in">
-            <h3 className="mt-2 text-xl font-semibold text-black">No deals yet</h3>
-            <p className="mt-1 text-md text-gray-700">Get started by creating a new deal.</p>
+          <div className="text-center py-16 sm:py-20 animate-fade-in">
+            <h3 className="mt-2 text-lg sm:text-xl font-semibold text-black">No deals yet</h3>
+            <p className="mt-1 text-sm sm:text-md text-gray-700">Get started by creating a new deal.</p>
             {onNavigateToNewDeal && (
               <div className="mt-6">
                 <button
                   onClick={onNavigateToNewDeal}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-black text-white font-semibold shadow hover:scale-105 hover:bg-gray-900 transition-all focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 rounded-lg bg-black text-white font-semibold shadow hover:scale-105 hover:bg-gray-900 transition-all focus:outline-none focus:ring-2 focus:ring-gray-400 text-sm sm:text-base"
                 >
-                  <PlusCircleIcon className="h-6 w-6 text-white" />
+                  <PlusCircleIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                   Create New Deal
                 </button>
               </div>
@@ -156,10 +156,10 @@ export const DealsPage: React.FC<DealsPageProps> = ({ onNavigateToNewDeal }) => 
       {showBackToTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-black text-white shadow-lg hover:bg-gray-900 transition-all animate-bounce"
+          className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 p-3 rounded-full bg-black text-white shadow-lg hover:bg-gray-900 transition-all animate-bounce"
           aria-label="Back to top"
         >
-          <ArrowUpIcon className="h-6 w-6 text-white" />
+          <ArrowUpIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
         </button>
       )}
     </div>
